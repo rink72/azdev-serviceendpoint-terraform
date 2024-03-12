@@ -3,7 +3,6 @@ parameters:
   terraformVersion: ""
   projectGroup: ""
   endpointName: ""
-  variables: {}
 
 jobs:
   - deployment: ${{ parameters.projectGroup }}

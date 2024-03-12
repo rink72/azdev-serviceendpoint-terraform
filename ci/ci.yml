@@ -11,4 +11,4 @@ jobs:
   parameters:
     projectGroup: group-one
     terraformAction: plan
-    variables: ${{ variables }}
+    terraformVersion: ${{ variables.terraformVersion }}
