@@ -35,6 +35,7 @@ jobs:
                 azureSubscription: ${{ parameters.endpointName }}
                 workingDirectory: ${{ parameters.terraformLocation }}
                 scriptType: pscore
+                addSpnToEnvironment: true
                 scriptLocation: inlineScript
                 inlineScript: |
                   $env:Path += ";$env:USERPROFILE\.terraform.d\cli\${{ parameters.terraformVersion }}"
