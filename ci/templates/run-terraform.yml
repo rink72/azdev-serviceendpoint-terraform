@@ -44,7 +44,7 @@ jobs:
                   $env:ARM_TENANT_ID = $tenantId
                   $env:ARM_SUBSCRIPTION_ID = ${{ parameters.subscriptionId }}
 
-                  gci env: | sort-object name
+                  gci env: | out-string
 
                   # $env:Path += ";$env:USERPROFILE\.terraform.d\cli\${{ parameters.terraformVersion }}"
 
