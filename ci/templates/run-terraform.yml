@@ -3,6 +3,10 @@ parameters:
   terraformVersion: ""
   projectGroup: ""
   endpointName: ""
+  subscriptionId: ""
+  orgUrl: ""
+  personalAccessToken: ""
+  terraformLocation: ""
 
 jobs:
   - deployment: ${{ parameters.projectGroup }}
@@ -24,6 +28,21 @@ jobs:
                 $env:Path += ";$env:USERPROFILE\.terraform.d\cli\${{ parameters.terraformVersion }}"
                 terraform --version
               displayName: Install Terraform
+
+            - task: AzureCLI@2
+              displayName: Terraform ${{ parameters.terraformAction }}
+              inputs:
+                azureSubscription: ${{ parameters.endpointName }}
+                workingDirectory: ${{ parameters.terraformLocation }}
+                scriptType: pwsh
+                scriptLocation: inlineScript
+                inlineScript: |
+                  terraform init -backend-config="subscription_id=${{ parameters.subscriptionId }}" -backend-config="key=azdev-serviceendpoint-terraform/${{ parameters.projectGroup }}.terraform.tfstate"
+                  terraform ${{ parameters.terraformAction }}
+              env:
+                AZDO_ORG_SERVICE_URL: ${{ parameters.orgUrl }}
+                AZDO_PERSONAL_ACCESS_TOKEN: ${{ parameters.personalAccessToken }}
+
 
 
 

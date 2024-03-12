@@ -15,6 +15,9 @@ stages:
         projectGroup: groupone
         terraformAction: plan
         terraformVersion: ${{ variables.terraformVersion }}
+        orgUrl: ${{ variables.orgUrl }}
+        personalAccessToken: $(System.AccessToken)
+        terraformLocation: ${{ variables.terraformLocation }}
 
   - stage: grouptwo
     displayName: Group two
@@ -25,3 +28,6 @@ stages:
         projectGroup: grouptwo
         terraformAction: plan
         terraformVersion: ${{ variables.terraformVersion }}
+        orgUrl: ${{ variables.orgUrl }}
+        personalAccessToken: $(System.AccessToken)
+        terraformLocation: ${{ variables.terraformLocation }}
