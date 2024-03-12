@@ -18,6 +18,7 @@ stages:
 
   - stage: grouptwo
     displayName: Group two
+    dependsOn: []
     jobs:
     - template: templates/run-terraform.yml
       parameters:
