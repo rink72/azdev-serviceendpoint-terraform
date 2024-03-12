@@ -38,7 +38,10 @@ jobs:
                 addSpnToEnvironment: true
                 scriptLocation: inlineScript
                 inlineScript: |
-                  gci env: | sort-object name
+                  $env:ARM_CLIENT_ID = $servicePrincipalId
+                  $env:ARM_CLIENT_SECRET = $servicePrincipalKey
+                  $env:ARM_TENANT_ID = $tenantId
+                  $env:ARM_SUBSCRIPTION_ID = ${{ parameters.subscriptionId }}
 
                   $env:Path += ";$env:USERPROFILE\.terraform.d\cli\${{ parameters.terraformVersion }}"
 
