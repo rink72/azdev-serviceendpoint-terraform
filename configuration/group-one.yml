@@ -1,0 +1,27 @@
+projects:
+  - name: lab
+    sonarcloud_endpoints:
+      - sonarcloud-sve
+    azurerm_endpoints:
+      - azure-sve
+    snyk_endpoints:
+      - snyk-sve
+
+  - name: playground
+    sonarcloud_endpoints:
+      - sonarcloud-sve
+      - sonarcloud-sve-2
+    azurerm_endpoints:
+      - azure-sve
+      - azure-sve-2
+    snyk_endpoints:
+      - snyk-sve
+      - snyk-sve-2
+
+  - name: ClearAs
+    sonarcloud_endpoints:
+      - sonarcloud-sve
+      - sonarcloud-sve-2
+    azurerm_endpoints:
+      - azure-sve
+      - azure-sve-2

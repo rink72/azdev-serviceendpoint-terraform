@@ -1,0 +1,61 @@
+endpoints:
+  sonarcloud:
+    - endpoint_name: sonarcloud-sve
+      description: sonarcloud endpoint
+      keyvault_name: rink72-shared-kv
+      keyvault_secret_name: sonarcloud-key
+      keyvault_resource_group: shared-infra
+
+    - endpoint_name: sonarcloud-sve-2
+      description: sonarcloud endpoint
+      keyvault_name: rink72-shared-kv
+      keyvault_secret_name: sonarcloud-key
+      keyvault_resource_group: shared-infra
+
+    - endpoint_name: sonarcloud-sve-3
+      description: sonarcloud endpoint
+      keyvault_name: rink72-shared-kv
+      keyvault_secret_name: sonarcloud-key
+      keyvault_resource_group: shared-infra
+
+  azurerm:
+    - endpoint_name: azure-sve
+      description: azure endpoint
+      subscription_id: b530b5ac-8ca6-4393-b35f-068dcb970647
+      subscription_name: dev
+      service_principal_client_id: f1e435f2-387d-4b91-949f-8e5eb8ab038b
+      tenant_id: 54406fc1-bb8f-46c7-ae4d-4e4e563f1d5d
+    
+    - endpoint_name: azure-sve-2
+      description: azure endpoint
+      subscription_id: b530b5ac-8ca6-4393-b35f-068dcb970647
+      subscription_name: dev
+      service_principal_client_id: f1e435f2-387d-4b91-949f-8e5eb8ab038b
+      tenant_id: 54406fc1-bb8f-46c7-ae4d-4e4e563f1d5d
+
+    - endpoint_name: azure-sve-3
+      description: azure endpoint
+      subscription_id: b530b5ac-8ca6-4393-b35f-068dcb970647
+      subscription_name: dev
+      service_principal_client_id: f1e435f2-387d-4b91-949f-8e5eb8ab038b
+      tenant_id: 54406fc1-bb8f-46c7-ae4d-4e4e563f1d5d
+
+  snyk:
+    - endpoint_name: snyk-sve
+      description: snyk endpoint
+      keyvault_name: rink72-shared-kv
+      keyvault_secret_name: snyk-secret
+      keyvault_resource_group: shared-infra
+
+    - endpoint_name: snyk-sve-2
+      description: snyk endpoint
+      keyvault_name: rink72-shared-kv
+      keyvault_secret_name: snyk-secret
+      keyvault_resource_group: shared-infra
+
+    - endpoint_name: snyk-sve-3
+      description: snyk endpoint
+      keyvault_name: rink72-shared-kv
+      keyvault_secret_name: snyk-secret
+      keyvault_resource_group: shared-infra
+    
