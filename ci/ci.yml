@@ -6,15 +6,19 @@ pool:
 variables:
 - template: templates/variables.yml
 
-jobs:
-- template: templates/run-terraform.yml
-  parameters:
-    projectGroup: groupone
-    terraformAction: plan
-    terraformVersion: ${{ variables.terraformVersion }}
+stages:
+  - stage: Group one
+    jobs:
+    - template: templates/run-terraform.yml
+      parameters:
+        projectGroup: groupone
+        terraformAction: plan
+        terraformVersion: ${{ variables.terraformVersion }}
 
-- template: templates/run-terraform.yml
-  parameters:
-    projectGroup: grouptwo
-    terraformAction: plan
-    terraformVersion: ${{ variables.terraformVersion }}
+  - stage: Group two
+    jobs:
+    - template: templates/run-terraform.yml
+      parameters:
+        projectGroup: grouptwo
+        terraformAction: plan
+        terraformVersion: ${{ variables.terraformVersion }}
