@@ -1,0 +1,35 @@
+trigger: none
+
+pool:
+  vmImage: windows-latest
+
+variables:
+- template: templates/variables.yml
+
+stages:
+  - stage: groupone
+    displayName: Group one
+    jobs:
+    - template: templates/run-terraform.yml
+      parameters:
+        projectGroup: groupone
+        endpointName: ${{ variables.endpointName }}
+        terraformAction: apply
+        terraformVersion: ${{ variables.terraformVersion }}
+        orgUrl: ${{ variables.orgUrl }}
+        personalAccessToken: $(System.AccessToken)
+        terraformLocation: ${{ variables.terraformLocation }}
+
+  - stage: grouptwo
+    displayName: Group two
+    dependsOn: []
+    jobs:
+    - template: templates/run-terraform.yml
+      parameters:
+        projectGroup: grouptwo
+        endpointName: ${{ variables.endpointName }}
+        terraformAction: apply
+        terraformVersion: ${{ variables.terraformVersion }}
+        orgUrl: ${{ variables.orgUrl }}
+        personalAccessToken: $(System.AccessToken)
+        terraformLocation: ${{ variables.terraformLocation }}
