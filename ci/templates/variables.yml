@@ -1,0 +1,2 @@
+variables:
+  terraformVersion: 1.7.4

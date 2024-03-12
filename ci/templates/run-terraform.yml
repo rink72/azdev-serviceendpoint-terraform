@@ -1,0 +1,45 @@
+parameters:
+  terraformAction: plan
+  projectGroup: ""
+  endpointName: ""
+  variables: {}
+
+obs:
+  - deployment: ${{ parameters.projectGroup }}
+    displayName: ${{ parameters.projectGroup }}
+    environment: ${{ parameters.environmentName }}-${{ parameters.terraformAction }}
+    workspace:
+      clean: all
+    variables:
+      ${{ insert }}: ${{ parameters.variables }}
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - checkout: self
+
+            - pwsh: |
+                $url = "https://releases.hashicorp.com/terraform/${{ variables.terraformVersion }}/terraform_${{ variables.terraformVersion }}_windows_amd64.zip"
+                $zipFile = "terraform.zip"
+                Invoke-WebRequest -Uri $url -OutFile $zipFile
+                Expand-Archive -Path $zipFile -DestinationPath $env:USERPROFILE\.terraform.d\cli\$(terraformVersion)
+                $env:Path += ";$env:USERPROFILE\.terraform.d\cli\$(terraformVersion)"
+                terraform --version
+              displayName: Install Terraform
+
+
+
+            # - task: AzureCliTask@2
+            #   displayName: Terraform ${{ parameters.terraformAction }}
+            #   inputs:
+            #     azureSubscription: ${{ parameters.endpointName }}
+            #     scriptType: pwsh
+            #     scriptLocation: inlineScript
+            #     inlineScript: |
+            #       curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+            #       curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+            #       sudo apt-get update && sudo apt-get install -y unzip
+            #       curl -sL https://releases.hashicorp.com/terraform/${{ parameters.terraformVersion }}/terraform_${{ parameters.terraformVersion }}_linux_amd64.zip -o terraform.zip
+            #       unzip terraform.zip
+            #       sudo mv terraform /usr/local/bin/
+            #       terraform --version

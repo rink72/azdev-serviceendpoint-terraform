@@ -1,0 +1,13 @@
+trigger: none
+
+pool:
+  vmImage: windows-latest
+
+variables:
+- template: templates/variables.yml
+
+jobs:
+- template: templates/run-terraform.yml
+  parameters:
+    terraformAction: plan
+    variables: ${{ variables }}

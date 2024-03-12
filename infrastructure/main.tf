@@ -10,7 +10,7 @@ locals {
 
 module "azdev_projects" {
   for_each = { for idx, project in local.projects : idx => project }
-  source   = "../modules/azdev-serviceendpoint"
+  source   = "../modules/azdev-project"
 
   project_name = each.value.name
 
