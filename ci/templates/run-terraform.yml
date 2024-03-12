@@ -1,5 +1,6 @@
 parameters:
   terraformAction: plan
+  terraformVersion: ""
   projectGroup: ""
   endpointName: ""
   variables: {}
@@ -10,8 +11,6 @@ jobs:
     environment: ${{ parameters.environmentName }}-${{ parameters.terraformAction }}
     workspace:
       clean: all
-    variables:
-      ${{ insert }}: ${{ parameters.variables }}
     strategy:
       runOnce:
         deploy:
@@ -19,11 +18,11 @@ jobs:
             - checkout: self
 
             - pwsh: |
-                $url = "https://releases.hashicorp.com/terraform/${{ variables.terraformVersion }}/terraform_${{ variables.terraformVersion }}_windows_amd64.zip"
+                $url = "https://releases.hashicorp.com/terraform/${{ parameters.terraformVersion }}/terraform_${{ parameters.terraformVersion }}_windows_amd64.zip"
                 $zipFile = "terraform.zip"
                 Invoke-WebRequest -Uri $url -OutFile $zipFile
                 Expand-Archive -Path $zipFile -DestinationPath $env:USERPROFILE\.terraform.d\cli\$(terraformVersion)
-                $env:Path += ";$env:USERPROFILE\.terraform.d\cli\$(terraformVersion)"
+                $env:Path += ";$env:USERPROFILE\.terraform.d\cli\${{ parameters.terraformVersion }}"
                 terraform --version
               displayName: Install Terraform
 
