@@ -12,3 +12,9 @@ jobs:
     projectGroup: groupone
     terraformAction: plan
     terraformVersion: ${{ variables.terraformVersion }}
+
+- template: templates/run-terraform.yml
+  parameters:
+    projectGroup: grouptwo
+    terraformAction: plan
+    terraformVersion: ${{ variables.terraformVersion }}
