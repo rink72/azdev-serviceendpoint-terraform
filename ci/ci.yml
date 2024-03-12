@@ -19,6 +19,7 @@ stages:
         orgUrl: ${{ variables.orgUrl }}
         personalAccessToken: $(System.AccessToken)
         terraformLocation: ${{ variables.terraformLocation }}
+        subscriptionId: ${{ variables.subscriptionId }}
 
   - stage: grouptwo
     displayName: Group two
@@ -33,3 +34,4 @@ stages:
         orgUrl: ${{ variables.orgUrl }}
         personalAccessToken: $(System.AccessToken)
         terraformLocation: ${{ variables.terraformLocation }}
+        subscriptionId: ${{ variables.subscriptionId }}
