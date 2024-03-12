@@ -4,7 +4,7 @@ parameters:
   endpointName: ""
   variables: {}
 
-obs:
+jobs:
   - deployment: ${{ parameters.projectGroup }}
     displayName: ${{ parameters.projectGroup }}
     environment: ${{ parameters.environmentName }}-${{ parameters.terraformAction }}
