@@ -1,4 +1,5 @@
 variables:
+  endpointName: azure-sve
   terraformVersion: 1.7.4
   subscriptionId: b530b5ac-8ca6-4393-b35f-068dcb970647
   orgUrl: https://dev.azure.com/rink72

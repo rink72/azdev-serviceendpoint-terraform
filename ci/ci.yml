@@ -13,6 +13,7 @@ stages:
     - template: templates/run-terraform.yml
       parameters:
         projectGroup: groupone
+        endpointName: ${{ variables.endpointName }}
         terraformAction: plan
         terraformVersion: ${{ variables.terraformVersion }}
         orgUrl: ${{ variables.orgUrl }}
@@ -26,6 +27,7 @@ stages:
     - template: templates/run-terraform.yml
       parameters:
         projectGroup: grouptwo
+        endpointName: ${{ variables.endpointName }}
         terraformAction: plan
         terraformVersion: ${{ variables.terraformVersion }}
         orgUrl: ${{ variables.orgUrl }}
