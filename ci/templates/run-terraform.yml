@@ -37,7 +37,9 @@ jobs:
                 scriptType: pwsh
                 scriptLocation: inlineScript
                 inlineScript: |
-                  $env:USERPROFILE\.terraform.d\cli\${{ parameters.terraformVersion }}\terraform version
+                  $additionalPath = "$env:USERPROFILE\.terraform.d\cli\${{ parameters.terraformVersion }}"
+                  Set-Item -Path Env:Path -Value ($env:Path + ";$additionalPath")
+
                   terraform init -backend-config="subscription_id=${{ parameters.subscriptionId }}" -backend-config="key=azdev-serviceendpoint-terraform/${{ parameters.projectGroup }}.terraform.tfstate"
                   terraform ${{ parameters.terraformAction }}
               env:
