@@ -44,6 +44,8 @@ jobs:
                   $env:ARM_TENANT_ID = $tenantId
                   $env:ARM_SUBSCRIPTION_ID = ${{ parameters.subscriptionId }}
 
+                  gci env: | sort-object name
+
                   $env:Path += ";$env:USERPROFILE\.terraform.d\cli\${{ parameters.terraformVersion }}"
 
                   terraform init -backend-config="subscription_id=${{ parameters.subscriptionId }}" -backend-config="key=azdev-serviceendpoint-terraform/${{ parameters.projectGroup }}.terraform.tfstate"
