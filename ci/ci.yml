@@ -7,7 +7,8 @@ variables:
 - template: templates/variables.yml
 
 stages:
-  - stage: Group one
+  - stage: groupone
+    displayName: Group one
     jobs:
     - template: templates/run-terraform.yml
       parameters:
@@ -15,7 +16,8 @@ stages:
         terraformAction: plan
         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: Group two
+  - stage: grouptwo
+    displayName: Group two
     jobs:
     - template: templates/run-terraform.yml
       parameters:
