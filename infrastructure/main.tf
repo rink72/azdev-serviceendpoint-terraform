@@ -1,6 +1,6 @@
 locals {
   endpoint_definitions = yamldecode(file("${path.root}/../configuration/endpoints.yml"))["endpoints"]
-  projects             = yamldecode(file("${path.root}/../configuration/group-one.yml"))["projects"]
+  projects             = yamldecode(file("${path.root}/../configuration/groupone.yml"))["projects"]
 
   endpoint_map = {
     for type, endpoints in local.endpoint_definitions :
