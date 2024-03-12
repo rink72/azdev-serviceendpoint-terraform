@@ -16,7 +16,6 @@ terraform {
     }
   }
   backend "azurerm" {
-    subscription_id      = ""
     resource_group_name  = "rink72tf-rg"
     storage_account_name = "rink72tfsa"
     container_name       = "tfstate"
